@@ -3,7 +3,9 @@ import { getCollection } from 'astro:content'
 import ProjectCard from '../components/ProjectCard.astro'
 import Layout from '../layouts/Layout.astro'
 
-const projects = await getCollection('projects')
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.pubDate.localeCompare(a.data.pubDate))
+  .slice(0, 3)
 ---
 
 <Layout title='Welcome to Astro.'>

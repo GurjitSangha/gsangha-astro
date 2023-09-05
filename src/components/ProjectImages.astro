@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets'
+import ProjectImage from './ProjectImage.astro'
+import type { ProjectSchema } from '../content/config'
+const { images } = Astro.props
+
+interface Props {
+  images: ProjectSchema['images']
+}
+---
+
+{
+  images?.map((image) => (
+    <ProjectImage link={image.link}>
+      <Image
+        src={image.src}
+        width={666}
+        height={375}
+        alt={image.alt}
+        class='rounded'
+      />
+    </ProjectImage>
+  ))
+}

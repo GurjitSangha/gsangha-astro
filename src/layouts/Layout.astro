@@ -9,10 +9,12 @@ interface Props {
 }
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props
+
+let theme = 'forest'
 ---
 
 <!doctype html>
-<html data-theme='dark' lang='en'>
+<html data-theme={theme} lang='en'>
   <head>
     <meta charset='UTF-8' />
     <meta name='description' content={description} />

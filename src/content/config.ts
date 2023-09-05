@@ -3,8 +3,16 @@ import { z, defineCollection } from 'astro:content'
 const projectSchema = z.object({
   title: z.string(),
   description: z.string(),
-  pubDate: z.string(),
-  heroImage: z.string()
+  pubDate: z.string().datetime(),
+  heroImage: z.string(),
+  images: z
+    .object({
+      src: z.string(),
+      alt: z.string(),
+      link: z.string().optional()
+    })
+    .array()
+    .optional()
 })
 
 const projectCollection = defineCollection({

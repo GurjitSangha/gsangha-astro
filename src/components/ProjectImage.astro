@@ -1,0 +1,13 @@
+---
+const { link } = Astro.props
+---
+
+{
+  link ? (
+    <a href={link} target='_blank'>
+      <slot />
+    </a>
+  ) : (
+    <slot />
+  )
+}

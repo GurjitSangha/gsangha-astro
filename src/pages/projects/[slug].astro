@@ -1,8 +1,9 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
+import { getCollection, type CollectionEntry } from 'astro:content'
+import ProjectImages from '../../components/ProjectImages.astro'
 import { type ProjectSchema } from '../../content/config'
 import Layout from '../../layouts/Layout.astro'
-import { Image } from 'astro:assets'
 
 export async function getStaticPaths() {
   const entries = await getCollection('projects')
@@ -22,21 +23,33 @@ const { Content } = await entry.render()
 ---
 
 <Layout title='Blog post'>
-  <div class='flex flex-col items-center'>
-    <Image
-      src={project.heroImage}
-      width={1152}
-      height={648}
-      alt={project.title}
-      class='rounded'
-      transition:name={`${project.title}_image`}
-    />
-    <h1 class='py-4 text-4xl font-bold' transition:name={project.title}>
-      {project.title}
-    </h1>
-    <h3 class='pb-2 text-xl font-semibold'>
-      {project.description}
-    </h3>
-    <Content />
+  <div class='flex flex-col md:flex-row gap-8'>
+    <div class='flex-1 flex flex-col gap-8'>
+      <Image
+        src={project.heroImage}
+        width={666}
+        height={375}
+        alt={project.title}
+        class='rounded'
+        transition:name={`${project.title}_image`}
+      />
+      <div class='hidden md:block'>
+        <ProjectImages images={project.images} />
+      </div>
+    </div>
+
+    <div class='flex-1 prose'>
+      <h1 class='py-4 text-4xl font-bold' transition:name={project.title}>
+        {project.title}
+      </h1>
+      <h3 class='pb-2 text-xl font-semibold'>
+        {project.description}
+      </h3>
+      <Content />
+    </div>
+
+    <div class='flex-1 md:hidden'>
+      <ProjectImages images={project.images} />
+    </div>
   </div>
 </Layout>
