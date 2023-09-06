@@ -9,16 +9,18 @@ interface Props {
 }
 ---
 
-{
-  images?.map((image) => (
-    <ProjectImage link={image.link}>
-      <Image
-        src={image.src}
-        width={666}
-        height={375}
-        alt={image.alt}
-        class='rounded'
-      />
-    </ProjectImage>
-  ))
-}
+<div class='flex flex-col gap-8'>
+  {
+    images?.map((image) => (
+      <ProjectImage link={image.link}>
+        <Image
+          src={image.src}
+          width={666}
+          height={375}
+          alt={image.alt}
+          class='rounded'
+        />
+      </ProjectImage>
+    ))
+  }
+</div>

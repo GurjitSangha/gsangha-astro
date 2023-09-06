@@ -9,12 +9,10 @@ interface Props {
 }
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props
-
-let theme = 'forest'
 ---
 
 <!doctype html>
-<html data-theme={theme} lang='en'>
+<html lang='en'>
   <head>
     <meta charset='UTF-8' />
     <meta name='description' content={description} />
@@ -22,6 +20,22 @@ let theme = 'forest'
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      const getTheme = () => {
+        if (localStorage.getItem('theme') === null) {
+          document.documentElement.setAttribute('data-theme', 'light')
+        } else
+          document.documentElement.setAttribute(
+            'data-theme',
+            localStorage.getItem('theme')
+          )
+      }
+      document.addEventListener('astro:after-swap', getTheme)
+    </script>
+    <script>
+      import { themeChange } from 'theme-change'
+      themeChange()
+    </script>
   </head>
   <body>
     <div class='bg-base-100'>
