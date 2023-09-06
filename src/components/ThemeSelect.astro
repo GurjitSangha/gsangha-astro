@@ -32,9 +32,9 @@ import themes from './themes'
         >
           <div class='primary capitalize'>{theme}</div>
           <div class='flex gap-1'>
-            {['primary', 'secondary', 'accent', 'neutral'].map((colour) => (
-              <div class={`bg-${colour} w-3 h-full rounded`}>&nbsp;</div>
-            ))}
+            <div class={`bg-primary w-3 h-full rounded`}>&nbsp;</div>
+            <div class={`bg-secondary w-3 h-full rounded`}>&nbsp;</div>
+            <div class={`bg-accent w-3 h-full rounded`}>&nbsp;</div>
           </div>
         </button>
       ))
