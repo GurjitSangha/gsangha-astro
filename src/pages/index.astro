@@ -8,7 +8,7 @@ const projects = (await getCollection('projects'))
   .slice(0, 3)
 ---
 
-<Layout title='Welcome to Astro.'>
+<Layout title='Gurjit Sangha'>
   <main>
     <div class='py-6'>
       <h4 class='text-xl'>Hello 👋</h4>
@@ -20,9 +20,13 @@ const projects = (await getCollection('projects'))
       </p>
     </div>
     <a
-      class='btn btn-primary'
+      class='btn btn-primary hover:scale-105'
       href='https://www.linkedin.com/in/gurjitsangha'
       target='_blank'>Let's connect</a
+    >
+    <a
+      class='btn btn-primary ml-4 hover:scale-105'
+      href='mailto:gurjit@gsangha.com'>Email Me</a
     >
 
     <div class='pt-6 pb-4'>
